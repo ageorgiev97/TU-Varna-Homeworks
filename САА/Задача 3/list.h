@@ -1,6 +1,6 @@
-#ifndef LIST_H
-#define LIST_H
-
+#ifndef DLINKEDLIST_H
+#define DLINKEDLIST_H
+#include <iostream>
 template <typename T>
 class list
 {
@@ -59,12 +59,14 @@ list<T>::list_item::list_item(T value):
 template <typename T>
 inline void list<T>::append(T value) {
 	new list_item(value, this->_current->next, this->_current);
+	this->next();
 	this->_count++;
 }
 
 template <typename T>
 inline void list<T>::preppend(T value){
 	new list_item(value, this->_current, this->_current->previous);
+	this->previous();
 	this->_count++;
 }
 
@@ -135,7 +137,6 @@ void list<T>::clear_duplicates() {
 				this->_count--;
 			}
 		} while ((l2 = l2->next) && l2 != _pivot);
-		std::cout<<"asdf"<<std::endl;
 	} while ((l1 = l1->next) && l1 != _pivot);
 
 }
@@ -146,6 +147,9 @@ void list<T>::init(T value) {
 		this->_pivot = new list_item(value);
 		this->_current = this->_pivot;
 		this->_count = 1;
+	} else {
+		this->to_pivot();
+		this->preppend(value);
 	}
 }
 
@@ -169,4 +173,4 @@ list<T>::~list() {
 	this->clear();
 }
 
-#endif // LIST_H
+#endif // DLINKEDLIST_H
