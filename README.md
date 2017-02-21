@@ -12,5 +12,5 @@ Homeworks that we did in the university.
 - [x] Task 1
 - [x] Task 2
 - [x] Task 3
-- [ ] Task 4
+- [x] Task 4
 - [ ] Task 5
