@@ -1,6 +1,6 @@
-#ifndef DLINKEDLIST_H
-#define DLINKEDLIST_H
-#include <iostream>
+#ifndef LIST_H
+#define LIST_H
+
 template <typename T>
 class list
 {
@@ -169,4 +169,4 @@ list<T>::~list() {
 	this->clear();
 }
 
-#endif // DLINKEDLIST_H
+#endif // LIST_H
