@@ -7,7 +7,7 @@ Homeworks that we did in the university.
 ---
 
 ###CAA###
-![](/САА/Задание%2020.jpg )
+![](Задание%2020.jpg )
 
 - [x] Task 1
 - [x] Task 2
