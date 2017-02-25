@@ -2,15 +2,16 @@
 
 using std::cout;
 using std::endl;
+using std::cin;
 
 template <typename T>
 class Deque{
-    private:
+private:
     T *arr;
     int numberOfElementsInside;
     int capacity;
 
-    public:
+public:
     Deque(int size) {
         this->arr=new T[size];
         this->capacity=size+1;
@@ -88,27 +89,28 @@ class Deque{
     }
 
     T popLeft(){
-            if (numberOfElementsInside == 0) {
-                cout<<"The Deque Is Empty!"<<endl;
-               throw std::exception();
-            }
-            else {
-                T tmp = peekFirst();
-                removeFirst();
-                return tmp;
-            }
+        if (numberOfElementsInside == 0) {
+            cout<<"The Deque Is Empty!"<<endl;
+            throw std::exception();
+        }
+        else {
+            T tmp = peekFirst();
+            removeFirst();
+            return tmp;
+        }
     }
     T popRight(){
-            if (numberOfElementsInside == 0) {
-                cout<<"The Deque Is Empty!"<<endl;
-                throw std::exception();
-            }
-            else {
-                T tmp = peekLast();
-                removeLast();
-                return tmp;
-            }
+        if (numberOfElementsInside == 0) {
+            cout<<"The Deque Is Empty!"<<endl;
+            throw std::exception();
+        }
+        else {
+            T tmp = peekLast();
+            removeLast();
+            return tmp;
+        }
     }
+
 
 };
 
@@ -117,13 +119,45 @@ int main(){
 
     Deque<int> a= Deque<int>(5);
 
-    a.pushRight(1);
-    a.pushLeft(2);
-    a.pushRight(3);
+    int input;
+    int tmp;
 
-    cout<<a.popRight()<<endl;
-    cout<<a.popLeft()<<endl;
-    cout<<a.popRight()<<endl;
+    cout<<"Chose an option from the menu:"<<endl;
+    cout<<"1. Push element to Right"<<endl;
+    cout<<"2. Push element to Left"<<endl;
+    cout<<"3. Pop element from Right"<<endl;
+    cout<<"4. Pop element from Left"<<endl;
+    cout<<"5. Exit"<<endl;
+
+    do{
+        cin>>input;
+
+        switch(input){
+            case 1:
+                cin>>tmp;
+                a.pushRight(tmp);
+                break;
+            case 2:
+                cin>>tmp;
+                a.pushLeft(tmp);
+                break;
+            case 3:
+                cout<<"Poped from the right:"<<endl;
+                cout<<a.popRight()<<endl;
+                break;
+            case 4:
+                cout<<"Poped from the left:"<<endl;
+                cout<<a.popLeft()<<endl;
+                break;
+            case 5:
+                cout<<"Bye!"<<endl;
+                break;
+            default:
+                cout<<"Incorect Value!"<<endl;
+
+        }
+
+    }while(input!=5);
 
     return 0;
 }
