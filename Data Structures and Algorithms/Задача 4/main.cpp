@@ -2,6 +2,7 @@
 
 using std::cout;
 using std::endl;
+using std::cin;
 
 struct TreeItem {
     int value;
@@ -75,7 +76,6 @@ struct TreeItem {
 
         return sumChildren();
     }
-
 };
 
 class BinaryTree{
@@ -89,17 +89,17 @@ public:
     }
 
     void insertItem(int value){
-       if (this->root== nullptr){
-           this->root = new TreeItem();
-           this->root->value=value;
-           this->levels=1;
-       }
-       else{
-           int lvl = root->insert(value);
+        if (this->root== nullptr){
+            this->root = new TreeItem();
+            this->root->value=value;
+            this->levels=1;
+        }
+        else{
+            int lvl = root->insert(value);
 
-           if (lvl+1 > this->levels)
-               this->levels = lvl+1;
-       }
+            if (lvl+1 > this->levels)
+                this->levels = lvl+1;
+        }
     }
 
     void print() {
@@ -119,27 +119,60 @@ public:
             cout << this->root->sumLevel(0, target) << endl;
         }
     }
+
+    void printSumOfLevels() {
+        int lvl = this->getLevels();
+        int sum = 0;
+        while (lvl)
+            sum += lvl--;
+
+        cout << sum << endl;
+    }
 };
 
 int main() {
     BinaryTree a = BinaryTree();
 
-    a.insertItem(4);
-    a.insertItem(6);
-    a.insertItem(1);
-    a.insertItem(7);
-    a.insertItem(3);
-    a.insertItem(10);
-    a.insertItem(5);
-    a.insertItem(111);
 
-    a.print();
-    cout<<endl;
+    int input;
 
-    for (int i = 0; i < a.getLevels(); i++) {
-        cout<<"Sum of row "<<i<<" :";
-        a.printSumAtLevel(i);
-    }
+
+    do{
+        cout<<"Chose an option from the menu:"<<endl;
+        cout<<"1. Add element to the binary tree"<<endl;
+        cout<<"2. Print sum of levels"<<endl;
+        cout<<"3. Exit"<<endl;
+
+        cin>>input;
+
+        switch(input){
+            case 1:
+                int valuesToAdd;
+                cout<<"How much values you want to add?"<<endl;
+                cin>>valuesToAdd;
+
+                while (valuesToAdd--){
+                    int tmp;
+                    cin>>tmp;
+                    a.insertItem(tmp);
+                }
+
+
+                break;
+            case 2:
+                cout<<"Sum of levels:"<<endl;
+                a.printSumOfLevels();
+                break;
+            case 3:
+                cout<<"Bye!"<<endl;
+                break;
+            default:
+                cout<<"Incorect Value!"<<endl;
+
+        }
+
+    }while(input!=3);
+
 
 
     return 0;
