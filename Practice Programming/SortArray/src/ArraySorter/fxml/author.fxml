@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<GridPane alignment="center" hgap="10" prefHeight="130.0" prefWidth="372.0" style="-fx-background-color: #26A69A;" vgap="2" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ArraySorter.Controller">
+   <children>
+   
+       <Text id="author-text" text="Автор:" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+       <Text id="author-text" text="Александър Георгиев" GridPane.columnIndex="0" GridPane.rowIndex="1">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+       <Text id="author-text" text="СИТ курс: I, група:2, фак. номер:61662147" GridPane.rowIndex="2">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+</GridPane>

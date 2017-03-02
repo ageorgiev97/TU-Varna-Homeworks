@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.validation.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #80CBC4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArraySorter.Controller">
+    <children>
+        <Pane layoutX="33.0" layoutY="33.0" prefHeight="334.0" prefWidth="534.0" style="-fx-background-color: #4DB6AC;">
+            <children>
+                <JFXButton layoutX="199.0" layoutY="264.0" onMouseClicked="#doSomething" prefHeight="54.0" prefWidth="137.0" ripplerFill="BLACK" style="-fx-background-color: #F1F8E9;" text="Сортирай">
+                    <font>
+                        <Font size="20.0" />
+                    </font></JFXButton>
+                <JFXTextField fx:id="textField1" layoutX="131.0" layoutY="160.0" prefHeight="29.0" prefWidth="273.0" />
+                <Text fill="#4d4d4d" layoutX="142.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Array Sorter">
+                    <font>
+                        <Font name="Segoe UI" size="47.0" />
+                    </font>
+                </Text>
+                <Text fx:id="actiontarget" layoutX="64.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="404.13671875">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Text layoutX="120.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Моля въведете числа разделени с запетая:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Text>
+
+            </children>
+        </Pane>
+        <Text id="show-author-text" onMouseClicked="#showAuthor" layoutX="548.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
