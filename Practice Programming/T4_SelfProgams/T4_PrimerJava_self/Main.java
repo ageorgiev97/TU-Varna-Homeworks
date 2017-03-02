@@ -1,3 +1,8 @@
+/* Self-програма JavaExample
+ * от Александър Росенов Георгиев, СИТ курс: I, група:2, фак. номер:61662147
+ * e-mail: aleksandar.r.georgiev@gmail.com
+ */
+
 package com.company;
 
 import com.company.University.Discipline;
