@@ -8,15 +8,14 @@ using std::cin;
 using std::string;
 using std::vector;
 
+
 struct Node;
 
 struct Link{
-    Node *from;
     Node *to;
     int price;
 
-    Link(Node *from, Node *to, int price){
-        this->from=from;
+    Link(Node *to, int price){
         this->to=to;
         this->price=price;
     }
@@ -27,7 +26,7 @@ struct Node{
     string name;
     vector<Link> links;
     bool visited;
-    int price = 0;
+    int price;
 
     Node(string name){
         this->visited = false;
@@ -47,11 +46,10 @@ int main() {
 
     do{
         cout<<"Chose an option from the menu:"<<endl;
-        cout<<"1. Add nodes."<<endl;
+        cout<<"1. Add nodes"<<endl;
         cout<<"2. Add links"<<endl;
-        cout<<"3. Pop element from Right"<<endl;
-        cout<<"4. Pop element from Left"<<endl;
-        cout<<"5. Exit"<<endl;
+        cout<<"3. Find the longest path"<<endl;
+        cout<<"4. Exit"<<endl;
         cin>>input;
 
         switch(input) {
@@ -81,6 +79,8 @@ int main() {
                     cout << "Distance:" << endl;
                     cin >> distance;
 
+                    distance *= -1;
+
                     Node *foundFrom;
                     Node *foundTo;
 
@@ -98,11 +98,10 @@ int main() {
                         }
                     }
 
-                    Link linkOne = Link(foundFrom, foundTo, distance);
-                    Link linkTwo = Link(foundTo, foundFrom, distance); //maybe
+                    Link linkOne = Link(foundTo, distance);
 
                     foundFrom->addLink(linkOne);
-                    foundTo->addLink(linkTwo);
+
 
 
                 }
@@ -117,6 +116,10 @@ int main() {
                 cin >> nodeFrom;
                 cout << "Enter end city: " << endl;
                 cin >> nodeTo;
+
+                for (Node &a : graph) {
+                    a.price = INT32_MAX;
+                }
 
                 Node *foundFrom;
                 Node *foundTo;
@@ -137,53 +140,49 @@ int main() {
 
                 vector<Node *> potential;
                 foundFrom->visited = true;
+                foundFrom->price = 0;
 
                 for (auto const &link : foundFrom->links) {
                     potential.push_back(link.to);
+                    link.to->price = link.price;
                 }
 
-                while (potential.size() > 0) {
-                    int cost = 0;
+                while (potential.size()) {
+                    int cost = INT32_MAX;
                     Node *next;
 
-                    for (auto const n: potential) {
-                        for (auto const &link : n->links) {
-                            if (link.price > cost && link.to->visited) {
-                                cost = link.price;
-                                next = link.from;
-                            } //else if (!link.to->visited)
-                                //potential.erase(std::remove(potential.begin(), potential.end(), link.to), potential.end());
-                            if (link.to->price + link.price > link.from->price)
-                                link.from->price = link.from->price + link.price;
+                    for (Node *&n: potential) {
+                        if (cost > n->price) {
+                            next = n;
+                            cost = n->price;
                         }
                     }
 
                     next->visited = true;
 
                     for (auto const &link : next->links) {
-                        if (!link.to->visited && std::find(potential.begin(), potential.end(), link.to) == potential.end())
+                        if (!link.to->visited &&
+                            std::find(potential.begin(), potential.end(), link.to) == potential.end()) {
                             potential.push_back(link.to);
+                        }
+                        link.to->price = std::min(link.to->price, next->price + link.price);
                     }
 
                     potential.erase(std::remove(potential.begin(), potential.end(), next), potential.end());
                 }
+                cout << "Max distance: " << foundTo->price * -1 << endl;
 
-                cout << foundTo->price << endl;
-
-        }
+            }
                 break;
             case 4:
-
-                break;
-            case 5:
-                cout<<"Bye!"<<endl;
+                cout << "Bye!" << endl;
                 break;
             default:
-                cout<<"Incorect Value!"<<endl;
+                cout<<"Incorrect Value!"<<endl;
 
         }
 
-    }while(input!=5);
+    }while(input!=4);
 
 
 
