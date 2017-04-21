@@ -6,6 +6,9 @@ using std::cin;
 using std::string;
 
 
+const int MAX_NUMBER_OF_ITEMS = 30;
+
+
 struct Item{
     string name;
     double price;
@@ -61,7 +64,7 @@ void findAndPrintItemByPrice(Item *arr, int &itemsCount, double price){
 
 int main() {
 
-    Item allItems[30];
+    Item allItems[MAX_NUMBER_OF_ITEMS];
     int itemsCount = 0;
     int input;
 
