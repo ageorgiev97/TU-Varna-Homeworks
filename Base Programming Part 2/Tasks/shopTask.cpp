@@ -19,7 +19,7 @@ struct Item{
 void addItems(Item *arr, int &itemsCount, int &itemsToAdd){
     for (int i = 0; i < itemsToAdd; i++) {
 
-        if(itemsCount > 30) {
+        if(itemsCount > MAX_NUMBER_OF_ITEMS) {
             cout << "The shop is full!" << endl;
             break;
         }
